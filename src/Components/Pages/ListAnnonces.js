@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthContext";
-import Erreur from "../UI/erreur";
+import Erreur from "../UI/Erreur";
 
 export default function ListAnnonces() {
 	const [data, setData] = useState([]);
@@ -27,7 +27,7 @@ export default function ListAnnonces() {
 		<>
 			{data.length === 0 ? (
 				<div>
-					<s />
+					<Erreur message="pas d'annonce pour le moment" color="red" />
 					<button
 						onClick={() => {
 							navigate("/product/add");
