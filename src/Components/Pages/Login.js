@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthContext";
 import "../../index.css";
@@ -7,28 +7,28 @@ import "../../index.css";
 export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	//const [token, setToken] = useState(localStorage.getItem("token"));
+	const { token, setToken } = useContext(AuthContext);
 	const navigate = useNavigate();
 
 	async function login() {
 		const user = { email, password };
-		const res = await axios.post("/api/user/login", user);
-		return res;
-	}
-
-	const { token, setToken } = useContext(AuthContext);
-
-	function submitHandler(e) {
-		e.preventDefault();
-		login().then((res) => {
-			setToken(res.data.token);
+		axios.post("/api/user/login", user).then((res) => {
 			localStorage.setItem("token", "Bearer " + res.data.token);
+			setToken(res.data.token);
 			console.log(res);
 			navigate("/");
 		});
 	}
+
+	function submitHandler(e) {
+		e.preventDefault();
+		login();
+	}
+
 	return (
 		<>
-			{token === "" ? (
+			{!token ? (
 				<div className="form">
 					<form onSubmit={submitHandler}>
 						<ul className="form-container">

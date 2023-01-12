@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Menu } from "./Components/Container/Menu";
+import AddProduct from "./Components/Pages/AddProduct";
 
 import Home from "./Components/Pages/Home";
 import Login from "./Components/Pages/Login";
@@ -10,6 +11,7 @@ import { AuthContext } from "./Contexts/AuthContext";
 
 function App() {
 	const [token, setToken] = useState(localStorage.getItem("token"));
+
 	return (
 		<div>
 			<AuthContext.Provider value={{ token, setToken }}>
@@ -19,7 +21,8 @@ function App() {
 						<Route path="/" element={<Home />} />
 						<Route path="/login" element={<Login />} />
 						<Route path="/signup" element={<SignUp />} />
-						<Route path="/product/:id" element={<Product match="" />} />
+						<Route path="/product/add" element={<AddProduct />} />
+						<Route path="/product/:id" element={<Product />} />
 					</Routes>
 				</Router>
 			</AuthContext.Provider>

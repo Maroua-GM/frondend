@@ -11,8 +11,9 @@ export default function SignUp(props) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [rePassword, setRePassword] = useState("");
-
 	const { token, setToken } = useContext(AuthContext);
+
+	//const token = localStorage.getItem("token");
 
 	const navigate = useNavigate();
 
@@ -23,7 +24,6 @@ export default function SignUp(props) {
 			.post("/api/user/signup", user)
 			.then((res) => {
 				console.log(res);
-
 				navigate("/login");
 			})
 			.then((err) => console.log(err));
@@ -31,7 +31,7 @@ export default function SignUp(props) {
 
 	return (
 		<>
-			{token === "" ? (
+			{!token ? (
 				<div className="form">
 					<form onSubmit={submitHandler}>
 						<ul className="form-container">
