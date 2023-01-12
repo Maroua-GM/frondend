@@ -25,6 +25,9 @@ export const Menu = () => {
 							<NavLink to="/product/add">Ajouter une annonce</NavLink>
 						</li>
 						<li>
+							<NavLink to="/user/product">Ma list d'annonces</NavLink>
+						</li>
+						<li>
 							<a onClick={logout}>Se deconnecter</a>
 						</li>
 					</ul>

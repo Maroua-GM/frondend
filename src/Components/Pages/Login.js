@@ -15,7 +15,7 @@ export default function Login() {
 		const user = { email, password };
 		axios.post("/api/user/login", user).then((res) => {
 			localStorage.setItem("token", "Bearer " + res.data.token);
-			setToken(res.data.token);
+			setToken("Bearer " + res.data.token);
 			console.log(res);
 			navigate("/");
 		});
