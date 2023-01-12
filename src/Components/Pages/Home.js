@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Contexts/AuthContext";
 
 export default function Home() {
 	const [data, setData] = useState([]);
-	const { token } = useContext(AuthContext);
+	const [token, setToken] = useState(localStorage.getItem("token"));
+
 	async function getAnnonces() {
 		const res = await axios.get("/api/annonce/annonces");
 		return setData(res.data.annonces);
@@ -17,7 +17,6 @@ export default function Home() {
 
 	return (
 		<>
-			{console.log(token)}
 			<ul className="products">
 				{data.map((product) => (
 					<li key={product._id}>
