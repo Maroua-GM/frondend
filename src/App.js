@@ -9,7 +9,7 @@ import SignUp from "./Components/Pages/SignUp";
 import { AuthContext } from "./Contexts/AuthContext";
 
 function App() {
-	const [token, setToken] = useState("");
+	const [token, setToken] = useState(localStorage.getItem("token"));
 	return (
 		<div>
 			<AuthContext.Provider value={{ token, setToken }}>

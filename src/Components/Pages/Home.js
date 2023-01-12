@@ -26,12 +26,12 @@ export default function Home() {
 								<img className="product-image" src={product.image_url} alt="product" />
 							</Link>
 							<div className="product-nom">
-								<Link to={"/product/" + product._id}>{product.nom}</Link>
+								<Link to={"/product/" + product._id}>nom: {product.nom}</Link>
 							</div>
-							<div className="product-categorie">{product.categorie}</div>
-							<div className="product-quantite">{product.qteDispo}</div>
-							<div className="product-prix">{product.prix}</div>
-							<div className="product-description">{product.description}</div>
+							<div className="product-categorie">categorie: {product.categorie}</div>
+							<div className="product-quantite">quantité: {product.qteDispo}</div>
+							<div className="product-prix">prix: {product.prix}</div>
+							<div className="product-description">Description :{product.description}</div>
 						</div>
 					</li>
 				))}
