@@ -57,15 +57,15 @@ export default function AddProduct() {
 							</li>
 							<li>
 								<label htmlFor="qteDispo">Quantité disponible</label>
-								<input type="qteDispo" id="qteDispo" name="qteDispo" value={qteDispo} onChange={(e) => setQteDispo(e.target.value)}></input>
+								<input type="number" id="qteDispo" name="qteDispo" value={qteDispo} onChange={(e) => setQteDispo(e.target.value)}></input>
 							</li>
 							<li>
 								<label htmlFor="categorie">Catégorie</label>
-								<input type="categorie" id="categorie" name="categorie" value={categorie} onChange={(e) => setCategorie(e.target.value)}></input>
+								<input type="text" id="categorie" name="categorie" value={categorie} onChange={(e) => setCategorie(e.target.value)}></input>
 							</li>
 							<li>
 								<label htmlFor="image_url">URL Image</label>
-								<input type="image_url" id="image_url" name="image_url" value={image} onChange={(e) => setImage(e.target.value)}></input>
+								<input type="text" id="image_url" name="image_url" value={image} onChange={(e) => setImage(e.target.value)}></input>
 							</li>
 							<li>
 								<button type="submit" className="button primary">

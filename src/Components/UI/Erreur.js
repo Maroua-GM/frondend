@@ -1,9 +1,10 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
 
 export default function Erreur(props) {
 	return (
-		<span class="error" id="errorname" style={{ backgroundColor: props.color }}>
+		<div className="alert alert-warning" role="alert">
 			{props.message}
-		</span>
+		</div>
 	);
 }

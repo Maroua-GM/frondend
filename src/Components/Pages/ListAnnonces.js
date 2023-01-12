@@ -27,7 +27,7 @@ export default function ListAnnonces() {
 		<>
 			{data.length === 0 ? (
 				<div>
-					<Erreur message="pas d'annonce pour le moment" color="red" />
+					<Erreur message="pas d'annonces pour le moment" />
 					<button
 						onClick={() => {
 							navigate("/product/add");
@@ -51,6 +51,9 @@ export default function ListAnnonces() {
 								<div className="product-quantite">quantité: {product.qteDispo}</div>
 								<div className="product-prix">prix: {product.prix}</div>
 								<div className="product-description">Description :{product.description}</div>
+								<Link to={"/product/" + product._id}>
+									<button>Modifier l'annonce</button>
+								</Link>
 							</div>
 						</li>
 					))}

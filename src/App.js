@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Menu } from "./Components/Container/Menu";
+import Menu2 from "./Components/Container/Menu2";
 import AddProduct from "./Components/Pages/AddProduct";
 
 import Home from "./Components/Pages/Home";
