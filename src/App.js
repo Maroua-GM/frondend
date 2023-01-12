@@ -1,20 +1,29 @@
+import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Menu } from "./Components/Container/Menu";
 
 import Home from "./Components/Pages/Home";
 import Login from "./Components/Pages/Login";
+import Product from "./Components/Pages/Product";
 import SignUp from "./Components/Pages/SignUp";
+import { AuthContext } from "./Contexts/AuthContext";
 
 function App() {
+	const [token, setToken] = useState("");
 	return (
-		<Router>
-			<Menu />
-			<Routes>
-				<Route path="/" component={Home} />
-				<Route path="/login" component={Login} />
-				<Route path="/signup" component={SignUp} />
-			</Routes>
-		</Router>
+		<div>
+			<AuthContext.Provider value={{ token, setToken }}>
+				<Router>
+					<Menu />
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<SignUp />} />
+						<Route path="/product/:id" element={<Product match="" />} />
+					</Routes>
+				</Router>
+			</AuthContext.Provider>
+		</div>
 	);
 }
 
