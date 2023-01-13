@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AnnonceContext } from "../../Contexts/AnnonceContext";
 import { AuthContext } from "../../Contexts/AuthContext";
 import Erreur from "../UI/Erreur";
 
@@ -15,6 +16,12 @@ export default function ListAnnonces() {
 		},
 	};
 
+	function deleteAnnonce(id) {
+		axios
+			.delete("/api/annonce/" + id, config)
+			.then((res) => console.log(res))
+			.catch((error) => console.log(error));
+	}
 	async function getUserAnnonces() {
 		const res = await axios.get("/api/annonce/getAnnonceUser", config);
 		return setData(res.data.annonces);
@@ -51,9 +58,12 @@ export default function ListAnnonces() {
 								<div className="product-quantite">quantité: {product.qteDispo}</div>
 								<div className="product-prix">prix: {product.prix}</div>
 								<div className="product-description">Description :{product.description}</div>
-								<Link to={"/product/" + product._id}>
-									<button>Modifier l'annonce</button>
-								</Link>
+								<button onClick={deleteAnnonce(product._id)}>Supprimer</button>
+								<AnnonceContext.Provider value={product}>
+									<Link to={"/product/add"}>
+										<button>Modifier l'annonce</button>
+									</Link>
+								</AnnonceContext.Provider>
 							</div>
 						</li>
 					))}

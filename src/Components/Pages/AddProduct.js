@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { AnnonceContext } from "../../Contexts/AnnonceContext";
 
 export default function AddProduct() {
 	const [nom, setNom] = useState("");
@@ -10,6 +11,7 @@ export default function AddProduct() {
 	const [qteDispo, setQteDispo] = useState(0);
 	const [image, setImage] = useState("");
 	const navigate = useNavigate();
+	const product = useContext(AnnonceContext);
 
 	const config = {
 		headers: {
@@ -36,6 +38,7 @@ export default function AddProduct() {
 	}
 	return (
 		<>
+			{console.log(product)}
 			{token ? (
 				<div className="form">
 					<form onSubmit={submitHandler}>
